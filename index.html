@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function toggleSection(sectionId) {
+            const sections = ['about', 'contact'];
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (id === sectionId) {
+                    section.style.display = section.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        function searchProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.getElementsByClassName('product');
+
+            for (let i = 0; i < products.length; i++) {
+                const productName = products[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (productName.includes(input)) {
+                    products[i].style.display = 'block';
+                } else {
+                    products[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Fashion Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="toggleSection('home')">Home</a></li>
+                <li><a href="#products" onclick="toggleSection('products')">Products</a></li>
+                <li><a href="#about" onclick="toggleSection('about')">About Us</a></li>
+                <li><a href="#contact" onclick="toggleSection('contact')">Contact</a></li>
+                <li class="search-container">
+                    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products..." />
+                    <button onclick="searchProducts()"><img src="search-icon.png" alt="Search" class="search-icon"></button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Welcome to Fashion Hub</h2>
+        <p>Discover the latest trends in clothing and accessories.</p>
+    </section>
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product">
+            <img src="clothing1.jpg" alt="Clothing 1">
+            <h3>Stylish Jacket</h3>
+            <p>Price: $49.99</p>
+            <a href="https://wa.me/263776278282" class="button">Add to Cart</a>
+        </div>
+        <div class="product">
+            <img src="clothing2.jpg" alt="Clothing 2">
+            <h3>Casual T-Shirt</h3>
+            <p>Price: $19.99</p>
+            <a href="https://wa.me/263776278282" class="button">Add to Cart</a>
+        </div>
+        <div class="product">
+            <img src="clothing3.jpg" alt="Clothing 3">
+            <h3>Elegant Dress</h3>
+            <p>Price: $89.99</p>
+            <a href="https://wa.me/263776278282" class="button">Add to Cart</a>
+        </div>
+    </section>
+
+    <section id="about" style="display: none;">
+        <h2>About Us</h2>
+        <p>King Mapuva Fashion Hub is a company that sells both formal and non-formal clothing of good quality. We pride ourselves on providing our customers with the latest trends and timeless styles to suit every occasion.</p>
+    </section>
+
+    <section id="contact" style="display: none;">
+        <h2>Contact Us</h2>
+        <p>Contact Number: <a href="https://wa.me/263776278282">+263 77 627 8282</a></p>
+        <p>Email: <a href="mailto:kmapuva1@gmail.com">kmapuva1@gmail.com</a></p>
+        <p>Address: Online Services</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Fashion Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>
